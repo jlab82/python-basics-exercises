@@ -13,7 +13,13 @@ def get_largest_number(numbers):
     :param numbers: List containing corresponding numbers
     :return: Largest number found
     """
-    pass  # <--- remove this `pass` and put your code here
+    mayor = numbers[0]
+    for pos in numbers:
+        if pos > mayor:
+            mayor = pos
+        else:
+            pass
+    return mayor
 
 
 def get_smallest_number(numbers):
@@ -31,7 +37,13 @@ def get_smallest_number(numbers):
     :param numbers: List containing corresponding numbers
     :return: Smallest number found
     """
-    pass  # <--- remove this `pass` and put your code here
+    menor = numbers[0]
+    for pos in numbers:
+        if pos < menor:
+            menor = pos
+        else:
+            pass
+    return menor
 
 
 def get_even_numbers(numbers):
@@ -49,7 +61,13 @@ def get_even_numbers(numbers):
     :param numbers: - List containing corresponding numbers
     :return: New list containing all even numbers found
     """
-    pass  # <--- remove this `pass` and put your code here
+    numeros_pares = []
+    for i in range(len(numbers)):
+        if numbers[i] % 2 == 0:
+            numeros_pares.append(numbers[i])
+        else:
+            pass
+    return numeros_pares
 
 
 def filter_even_numbers(numbers):
@@ -67,8 +85,16 @@ def filter_even_numbers(numbers):
     :param numbers: List containing corresponding numbers
     :return: Nothing
     """
-    pass  # <--- remove this `pass` and put your code here
+    lista_auxiliar = []
+    for i in range(len(numbers)):
+        if numbers[i] % 2 == 0 and numbers[i] != 0:
+            lista_auxiliar.append(numbers[i])
+        else:
+            pass
+    if not lista_auxiliar:
+        numbers = " "
 
+    print numbers
 
 def draw_solid_rectangle(x, y):
     """Generates a string with a solid rectangle made of * symbols with `x` columns and `y` rows.
@@ -108,7 +134,12 @@ def draw_solid_rectangle(x, y):
     :param y: Number of rows (height)
     :return: String containing corresponding solid rectangle
     """
-    pass  # <--- remove this `pass` and put your code here
+    lista = []
+    for i in range(y):
+        lista.append("*" * x)
+
+    for i in lista:
+        print lista[0]
 
 
 def draw_rectangle_borders(x, y):
@@ -149,7 +180,10 @@ def draw_rectangle_borders(x, y):
     :param y: Number of rows (height)
     :return: String containing corresponding rectangle border
     """
-    pass  # <--- remove this `pass` and put your code here
+    print("*"*x)
+    for i in range(y-2):
+        print("*"+" "*(x-2)+"*")
+    print("*"*x)
 
 
 def draw_pyramid(height):
@@ -173,7 +207,15 @@ def draw_pyramid(height):
     :param height: Number of rows (height)
     :return: String containing corresponding pyramid
     """
-    pass  # <--- remove this `pass` and put your code here
+    aux = -1
+    base = height * 2 - 1
+    intermedio = base / 2
+    lista = []
+    for i in range(height):
+        print(" " * (intermedio - i) + "*" * (aux + 2) + " " * (intermedio - i))
+        lista.append(" " * (intermedio - i) + "*" * (aux + 2) + " " * (intermedio - i))
+        aux += 2
+    return lista
 
 
 def draw_inverted_pyramid(height):
@@ -197,7 +239,13 @@ def draw_inverted_pyramid(height):
     :param height: Number of rows (height)
     :return: String containing corresponding inverted pyramid
     """
-    pass  # <--- remove this `pass` and put your code here
+    base = height * 2 - 1
+    lista = []
+    for i in range(height):
+        print(" "*i + "*"*base + " "*i)
+        lista.append(" "*i + "*"*base + " "*i)
+        base -= 2
+    return str(lista)
 
 
 def chars_counter(string):

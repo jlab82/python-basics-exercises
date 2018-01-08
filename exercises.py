@@ -89,12 +89,11 @@ def filter_even_numbers(numbers):
     for i in range(len(numbers)):
         if numbers[i] % 2 == 0 and numbers[i] != 0:
             lista_auxiliar.append(numbers[i])
-        else:
-            pass
-    if not lista_auxiliar:
-        numbers = " "
 
-    print numbers
+    numbers = []
+    for i in range(len(lista_auxiliar)):
+        numbers.append(lista_auxiliar[i])
+
 
 def draw_solid_rectangle(x, y):
     """Generates a string with a solid rectangle made of * symbols with `x` columns and `y` rows.
@@ -135,11 +134,17 @@ def draw_solid_rectangle(x, y):
     :return: String containing corresponding solid rectangle
     """
     lista = []
+    cadena = ""
     for i in range(y):
         lista.append("*" * x)
 
-    for i in lista:
-        print lista[0]
+    for i in range(len(lista)):
+        cadena += str(lista[i])
+        if i == len(lista)-1:
+            break
+        else:
+            cadena += "\n"
+    return cadena
 
 
 def draw_rectangle_borders(x, y):
@@ -180,10 +185,22 @@ def draw_rectangle_borders(x, y):
     :param y: Number of rows (height)
     :return: String containing corresponding rectangle border
     """
-    print("*"*x)
+    lista = []
+    cadena = ""
+    lista.append("*"*x)
+
     for i in range(y-2):
-        print("*"+" "*(x-2)+"*")
-    print("*"*x)
+        lista.append("*"+" "*(x-2)+"*")
+    if y > 1:
+        lista.append("*"*x)
+
+    for i in range(len(lista)):
+        cadena += str(lista[i])
+        if i == len(lista)-1:
+            break
+        else:
+            cadena += "\n"
+    return cadena
 
 
 def draw_pyramid(height):
@@ -211,11 +228,18 @@ def draw_pyramid(height):
     base = height * 2 - 1
     intermedio = base / 2
     lista = []
+    cadena = ""
     for i in range(height):
-        print(" " * (intermedio - i) + "*" * (aux + 2) + " " * (intermedio - i))
-        lista.append(" " * (intermedio - i) + "*" * (aux + 2) + " " * (intermedio - i))
+        lista.append(" " * (intermedio - i) + "*" * (aux + 2))
         aux += 2
-    return lista
+
+    for i in range(len(lista)):
+        cadena += str(lista[i])
+        if i == len(lista)-1:
+            break
+        else:
+            cadena += "\n"
+    return cadena
 
 
 def draw_inverted_pyramid(height):
@@ -241,11 +265,18 @@ def draw_inverted_pyramid(height):
     """
     base = height * 2 - 1
     lista = []
+    cadena = ""
     for i in range(height):
-        print(" "*i + "*"*base + " "*i)
         lista.append(" "*i + "*"*base + " "*i)
         base -= 2
-    return str(lista)
+
+    for i in range(len(lista)):
+        cadena += str(lista[i])
+        if i == len(lista)-1:
+            break
+        else:
+            cadena += "\n"
+    return cadena
 
 
 def chars_counter(string):
@@ -262,7 +293,14 @@ def chars_counter(string):
     :param string: String to count chars
     :return: Dictionary with char and counter key-value pairs
     """
-    pass  # <--- remove this `pass` and put your code here
+    diccionario = {}
+    for i in string:
+        valor = 0
+        for j in string:
+            if i == j:
+                valor += 1
+        diccionario[i] = valor
+    return diccionario
 
 
 def sort_list_ascending(elements):
